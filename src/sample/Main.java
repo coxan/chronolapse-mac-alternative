@@ -2,8 +2,10 @@ package sample;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.*;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -49,10 +51,8 @@ public class Main extends Application {
         });
         status = new Text("Not running.");
         primaryStage.setTitle("djajdioajw");
-        FlowPane layout = new FlowPane(25, 25);
-        layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(status, button, dir);
-        primaryStage.setScene(new Scene(layout, 300, 400));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setScene(new Scene(root, 300, 400));
         primaryStage.show();
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by gnotlasers on 2017/04/22.
+ * Created by coxan on 2017/04/22.
  */
 public class Capture implements Runnable{
     public void run(){
