@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.HTMLEditor?>
+
+<FlowPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <MenuBar maxHeight="1.7976931348623157E308" prefHeight="29.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="About">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Credits" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane maxWidth="1.7976931348623157E308" prefHeight="403.0" prefWidth="599.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Capture">
+               <content>
+                  <AnchorPane prefHeight="333.0" prefWidth="599.0">
+                     <children>
+                        <ToggleButton fx:id="button_toggle" layoutX="25.0" layoutY="78.0" mnemonicParsing="false" text="Start Capture" AnchorPane.leftAnchor="25.0">
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ToggleButton>
+                        <Label layoutX="10.0" layoutY="6.0" text="Time Between Captures: " />
+                        <ProgressBar layoutX="25.0" layoutY="313.0" prefHeight="20.0" prefWidth="295.0" progress="0.0" />
+                        <CheckBox layoutX="14.0" layoutY="28.0" mnemonicParsing="false" text="Screenshots" />
+                        <CheckBox layoutX="14.0" layoutY="52.0" mnemonicParsing="false" text="Webcam" />
+                        <Button layoutX="23.0" layoutY="105.0" mnemonicParsing="false" text="Force Capture" />
+                        <Button layoutX="223.0" layoutY="24.0" mnemonicParsing="false" text="Configure" />
+                        <Button layoutX="223.0" layoutY="48.0" mnemonicParsing="false" text="Configure" />
+                        <TextField layoutX="245.0" layoutY="105.0" prefHeight="27.0" prefWidth="60.0" />
+                        <Text layoutX="200.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frames" />
+                        <Button layoutX="86.0" layoutY="158.0" mnemonicParsing="false" text="Register Hotkey" />
+                        <TextField layoutX="61.0" layoutY="185.0" />
+                        <TextField layoutX="165.0" layoutY="1.0" prefHeight="27.0" prefWidth="36.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Schedule">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Time: " />
+                        <Text layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Time: " />
+                        <DatePicker layoutX="85.0" layoutY="9.0" />
+                        <DatePicker layoutX="85.0" layoutY="46.0" />
+                        <CheckBox layoutX="85.0" layoutY="80.0" mnemonicParsing="false" text="Activate Schedule" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="Modify">
+               <content>
+                  <AnchorPane>
+                     <opaqueInsets>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </opaqueInsets>
+                     <children>
+                        <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Source Folder:" />
+                        <Text layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Output Folder:" />
+                        <TextField layoutX="110.0" layoutY="14.0" prefHeight="27.0" prefWidth="219.0" />
+                        <TextField layoutX="110.0" layoutY="39.0" prefHeight="27.0" prefWidth="219.0" />
+                        <Button layoutX="331.0" layoutY="14.0" mnemonicParsing="false" text="..." />
+                        <Button layoutX="331.0" layoutY="39.0" mnemonicParsing="false" text="..." />
+                        <Text layoutX="12.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Width: " />
+                        <Text layoutX="181.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height: " />
+                        <TextField layoutX="56.0" layoutY="99.0" prefHeight="27.0" prefWidth="121.0" />
+                        <TextField layoutX="229.0" layoutY="99.0" prefHeight="27.0" prefWidth="121.0" />
+                        <CheckBox layoutX="12.0" layoutY="81.0" mnemonicParsing="false" text="Resize" />
+                        <CheckBox layoutX="12.0" layoutY="148.0" mnemonicParsing="false" text="Rename" />
+                        <Button layoutX="156.0" layoutY="185.0" mnemonicParsing="false" text="Convert Files" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Annotate">
+               <content>
+                  <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="200.0" prefWidth="506.0" />
+               </content>
+            </Tab>
+            <Tab text="Render">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox layoutX="14.0" layoutY="69.0" mnemonicParsing="false" text="Include Audio" />
+                        <Text layoutX="11.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Source Images: " />
+                        <Text layoutX="12.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Output Folder:  " />
+                        <Text layoutX="61.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Video Codec: " />
+                        <ComboBox layoutX="147.0" layoutY="147.0" prefWidth="150.0" />
+                        <Text layoutX="122.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frame Rate: " />
+                        <Text layoutX="80.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estimated Movie Length: 0m 0s" />
+                        <Button layoutX="45.0" layoutY="263.0" mnemonicParsing="false" text="Calculate Estimate" />
+                        <Button layoutX="258.0" layoutY="263.0" mnemonicParsing="false" text="Render" />
+                        <Text layoutX="11.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Audio File: " />
+                        <Button layoutX="350.0" layoutY="1.0" mnemonicParsing="false" text="..." />
+                        <TextField layoutX="108.0" layoutY="1.0" prefHeight="27.0" prefWidth="242.0" />
+                        <Button layoutX="350.0" layoutY="25.0" mnemonicParsing="false" text="..." />
+                        <TextField layoutX="108.0" layoutY="25.0" prefHeight="27.0" prefWidth="242.0" />
+                        <Button layoutX="321.0" layoutY="96.0" mnemonicParsing="false" text="..." />
+                        <TextField layoutX="79.0" layoutY="96.0" prefHeight="27.0" prefWidth="242.0" />
+                        <TextField layoutX="199.0" layoutY="180.0" prefHeight="27.0" prefWidth="35.0" />
+                        <Text layoutX="104.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Audio Length: No Audio" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Preview">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pagination layoutX="49.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
+                        <MediaView fitHeight="200.0" fitWidth="200.0" layoutX="300.0" layoutY="74.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TabPane>
+   </children>
+</FlowPane>
