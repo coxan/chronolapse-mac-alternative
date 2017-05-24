@@ -5,11 +5,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
-import javafx.stage.DirectoryChooser;
 
 import java.io.File;
 import java.net.URL;
-import java.nio.file.DirectoryIteratorException;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
@@ -26,7 +24,7 @@ public class Controller implements Initializable{
     private File vidDir;
 
     public void initialize(URL url, ResourceBundle rb){
-        button_dir.setOnMouseClicked(directory = new DirectoryChooser().showDialog());
+
         button_save.setOnMouseClicked(x -> saveSettings());
         button_reset.setOnMouseClicked(x -> {
             ssDir = null;
