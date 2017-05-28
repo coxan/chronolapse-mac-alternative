@@ -132,6 +132,10 @@ public class Controller implements Initializable{
         });
 
         // Schedule Tab
+        dp_start.chronologyProperty().addListener((observable, oldValue, newValue) -> Settings.setScheduleStart(newValue));
+        dp_end.chronologyProperty().addListener(((observable, oldValue, newValue) -> Settings.setScheduleStop(newValue)));
+
+        //Modify Tab
     }
 
     void saveSettings(){
