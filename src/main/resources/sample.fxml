@@ -117,11 +117,11 @@
                         <Button fx:id="bt_calculate" layoutX="45.0" layoutY="263.0" mnemonicParsing="false" text="Calculate Estimate" />
                         <Button fx:id="bt_render" layoutX="258.0" layoutY="263.0" mnemonicParsing="false" text="Render" />
                         <Text layoutX="11.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Audio File: " />
-                        <Button layoutX="350.0" layoutY="1.0" mnemonicParsing="false" text="..." />
+                        <Button fx:id="bt_renderOut" layoutX="350.0" layoutY="1.0" mnemonicParsing="false" text="..." />
                         <TextField fx:id="tf_renderOut" layoutX="108.0" layoutY="1.0" prefHeight="27.0" prefWidth="242.0" />
-                        <Button layoutX="350.0" layoutY="25.0" mnemonicParsing="false" text="..." />
+                        <Button fx:id="bt_renderSrc" layoutX="350.0" layoutY="25.0" mnemonicParsing="false" text="..." />
                         <TextField fx:id="tf_renderSrc" layoutX="108.0" layoutY="25.0" prefHeight="27.0" prefWidth="242.0" />
-                        <Button layoutX="321.0" layoutY="96.0" mnemonicParsing="false" text="..." />
+                        <Button fx:id="bt_audioFile" layoutX="321.0" layoutY="96.0" mnemonicParsing="false" text="..." />
                         <TextField fx:id="tf_audioFile" layoutX="79.0" layoutY="96.0" prefHeight="27.0" prefWidth="242.0" />
                         <TextField fx:id="tf_renderFrames" layoutX="199.0" layoutY="180.0" prefHeight="27.0" prefWidth="35.0" />
                         <Text layoutX="104.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Audio Length: No Audio" />

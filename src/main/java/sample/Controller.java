@@ -15,96 +15,39 @@ import java.util.Scanner;
 
 public class Controller implements Initializable{
 
-    @FXML
-    private FlowPane root;
-
-    @FXML
-    private ToggleButton bt_start;
-
-    @FXML
-    private CheckBox cb_ss;
-
-    @FXML
-    private CheckBox cb_wc;
-
-    @FXML
-    private Button bt_force;
-
-    @FXML
-    private Button bt_ssConfig;
-
-    @FXML
-    private Button bt_wcConfig;
-
-    @FXML
-    private Button bt_regHotkey;
-
-    @FXML
-    private TextField tf_hotkey;
-
-    @FXML
-    private TextField tf_interval;
-
-    @FXML
-    private DatePicker dp_start;
-
-    @FXML
-    private DatePicker dp_end;
-
-    @FXML
-    private CheckBox cb_schedule;
-
-    @FXML
-    private TextField tf_src;
-
-    @FXML
-    private TextField tf_out;
-
-    @FXML
-    private Button bt_src;
-
-    @FXML
-    private Button bt_out;
-
-    @FXML
-    private TextField tf_width;
-
-    @FXML
-    private TextField tf_height;
-
-    @FXML
-    private CheckBox cb_resize;
-
-    @FXML
-    private CheckBox cb_rename;
-
-    @FXML
-    private Button bt_convert;
-
-    @FXML
-    private CheckBox cb_audio;
-
-    @FXML
-    private ComboBox<?> combo_codec;
-
-    @FXML
-    private Button bt_calculate;
-
-    @FXML
-    private Button bt_render;
-
-    @FXML
-    private TextField tf_renderOut;
-
-    @FXML
-    private TextField tf_renderSrc;
-
-    @FXML
-    private TextField tf_audioFile;
-
-    @FXML
-    private TextField tf_renderFrames;
-
+    @FXML private FlowPane root;
+    @FXML private ToggleButton bt_start;
+    @FXML private CheckBox cb_ss;
+    @FXML private CheckBox cb_wc;
+    @FXML private Button bt_force;
+    @FXML private Button bt_ssConfig;
+    @FXML private Button bt_wcConfig;
+    @FXML private Button bt_regHotkey;
+    @FXML private TextField tf_hotkey;
+    @FXML private TextField tf_interval;
+    @FXML private DatePicker dp_start;
+    @FXML private DatePicker dp_end;
+    @FXML private CheckBox cb_schedule;
+    @FXML private TextField tf_src;
+    @FXML private TextField tf_out;
+    @FXML private Button bt_src;
+    @FXML private Button bt_out;
+    @FXML private TextField tf_width;
+    @FXML private TextField tf_height;
+    @FXML private CheckBox cb_resize;
+    @FXML private CheckBox cb_rename;
+    @FXML private Button bt_convert;
+    @FXML private Button bt_renderOut;
+    @FXML private Button bt_renderSrc;
+    @FXML private CheckBox cb_audio;
+    @FXML private ComboBox<?> combo_codec;
+    @FXML private Button bt_calculate;
+    @FXML private Button bt_render;
+    @FXML private TextField tf_renderOut;
+    @FXML private TextField tf_renderSrc;
+    @FXML private Button bt_audioFile;
+    @FXML private TextField tf_audioFile;
+    @FXML private TextField tf_renderFrames;
 
     public void initialize(URL url, ResourceBundle rb){
 
@@ -138,13 +81,13 @@ public class Controller implements Initializable{
         //Modify Tab
         bt_src.setOnMouseClicked(x -> {
             File file = new DirectoryChooser().showDialog(Main.window).getAbsoluteFile();
-            Settings.setModifySrc(file);
+            Modify.setSrc(file);
             tf_src.setText(file.getAbsolutePath());
         });
 
         bt_out.setOnMouseClicked(x -> {
             File file = new DirectoryChooser().showDialog(Main.window).getAbsoluteFile();
-            Settings.setModifyOut(file);
+            Modify.setOut(file);
             tf_out.setText(file.getAbsolutePath());
         });
 
@@ -154,7 +97,30 @@ public class Controller implements Initializable{
         tf_height.textProperty().addListener(((observable, oldValue, newValue) -> Modify.setResizeHeight(newValue)));
         bt_convert.setOnMouseClicked(x -> Modify.convert());
 
-        
+        //Render Tab
+        bt_renderOut.setOnMouseClicked(x -> {
+            File file = new DirectoryChooser().showDialog(Main.window).getAbsoluteFile();
+            Render.setOut(file);
+            tf_renderOut.setText(file.getAbsolutePath());
+        });
+
+        bt_renderSrc.setOnMouseClicked(x -> {
+            File file = new DirectoryChooser().showDialog(Main.window).getAbsoluteFile();
+            Render.setSrc(file);
+            tf_renderSrc.setText(file.getAbsolutePath());
+        });
+
+        cb_audio.selectedProperty().addListener((observable, oldValue, newValue) -> Render.setAudio(newValue));
+        combo_codec.selectionModelProperty().addListener((observable, oldValue, newValue) -> Render.setCodec(newValue.getSelectedIndex()));
+        bt_calculate.setOnMouseClicked(x -> Render.calculate());
+        bt_render.setOnMouseClicked(x -> Render.render());
+        bt_audioFile.setOnMouseClicked(x -> {
+            File file = new DirectoryChooser().showDialog(Main.window).getAbsoluteFile();
+            Render.setAudioFile(file);
+            tf_audioFile.setText(file.getAbsolutePath());
+        });
+        tf_renderFrames.textProperty().addListener(((observable, oldValue, newValue) -> Render.setFrames(newValue)));
+
     }
 
     void saveSettings(){
