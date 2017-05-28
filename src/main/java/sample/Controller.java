@@ -150,6 +150,11 @@ public class Controller implements Initializable{
 
         cb_rename.selectedProperty().addListener((observable, oldValue, newValue) -> Modify.setRename(newValue));
         cb_resize.selectedProperty().addListener(((observable, oldValue, newValue) -> Modify.setResize(newValue)));
+        tf_width.textProperty().addListener(((observable, oldValue, newValue) -> Modify.setResizeWidth(newValue)));
+        tf_height.textProperty().addListener(((observable, oldValue, newValue) -> Modify.setResizeHeight(newValue)));
+        bt_convert.setOnMouseClicked(x -> Modify.convert());
+
+        
     }
 
     void saveSettings(){
