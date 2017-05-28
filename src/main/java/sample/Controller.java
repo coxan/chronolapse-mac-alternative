@@ -5,7 +5,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.DirectoryChooser;
 
+import java.io.File;
+import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -107,12 +110,8 @@ public class Controller implements Initializable{
 
         // Capture Tab
         bt_start.setOnMouseClicked(x -> Capture.toggle());
-        cb_ss.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            cb_ss.isSelected() ? Settings.enableSS(true) : Settings.enableSS(false);
-        });
-        cb_wc.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            cb_wc.isSelected() ? Settings.enableWC(true) : Settings.enableWC(false);
-        });
+        cb_ss.selectedProperty().addListener((observable, oldValue, newValue) -> Settings.enableSS(newValue));
+        cb_wc.selectedProperty().addListener((observable, oldValue, newValue) -> Settings.enableWC(newValue));
         bt_force.setOnMouseClicked(x -> Capture.force());
         bt_ssConfig.setOnMouseClicked(SSConfig.showDialog());
         bt_wcConfig.setOnMouseClicked(WCConfig.showDialog());
@@ -134,8 +133,23 @@ public class Controller implements Initializable{
         // Schedule Tab
         dp_start.chronologyProperty().addListener((observable, oldValue, newValue) -> Settings.setScheduleStart(newValue));
         dp_end.chronologyProperty().addListener(((observable, oldValue, newValue) -> Settings.setScheduleStop(newValue)));
+        cb_schedule.selectedProperty().addListener(((observable, oldValue, newValue) -> Settings.schedule(newValue)));
 
         //Modify Tab
+        bt_src.setOnMouseClicked(x -> {
+            File file = new DirectoryChooser().showDialog(Main.window).getAbsoluteFile();
+            Settings.setModifySrc(file);
+            tf_src.setText(file.getAbsolutePath());
+        });
+
+        bt_out.setOnMouseClicked(x -> {
+            File file = new DirectoryChooser().showDialog(Main.window).getAbsoluteFile();
+            Settings.setModifyOut(file);
+            tf_out.setText(file.getAbsolutePath());
+        });
+
+        cb_rename.selectedProperty().addListener((observable, oldValue, newValue) -> Modify.setRename(newValue));
+        cb_resize.selectedProperty().addListener(((observable, oldValue, newValue) -> Modify.setResize(newValue)));
     }
 
     void saveSettings(){
