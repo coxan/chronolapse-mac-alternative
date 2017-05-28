@@ -76,7 +76,7 @@ public class Controller implements Initializable{
         // Schedule Tab
         dp_start.chronologyProperty().addListener((observable, oldValue, newValue) -> Schedule.setStartTime(newValue));
         dp_end.chronologyProperty().addListener(((observable, oldValue, newValue) -> Schedule.setStopTime(newValue)));
-        cb_schedule.selectedProperty().addListener(((observable, oldValue, newValue) -> Schedule.setRunSchedule(newValue)));
+        cb_schedule.selectedProperty().addListener(((observable, oldValue, newValue) -> Schedule.run = newValue));
 
         //Modify Tab
         bt_src.setOnMouseClicked(x -> {
