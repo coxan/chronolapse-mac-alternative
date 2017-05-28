@@ -17,4 +17,7 @@ public class Settings {
         settingsFile = new File("settings");
 
     }
+
+    public static void enableSS(Boolean newValue) {
+    }
 }

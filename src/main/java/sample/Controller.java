@@ -53,14 +53,14 @@ public class Controller implements Initializable{
 
         // Capture Tab
         bt_start.setOnMouseClicked(x -> Capture.toggle());
-        cb_ss.selectedProperty().addListener((observable, oldValue, newValue) -> Settings.enableSS(newValue));
-        cb_wc.selectedProperty().addListener((observable, oldValue, newValue) -> Settings.enableWC(newValue));
+        cb_ss.selectedProperty().addListener((observable, oldValue, newValue) -> Capture.enableSS = newValue);
+        cb_wc.selectedProperty().addListener((observable, oldValue, newValue) -> Capture.enableWC = newValue);
         bt_force.setOnMouseClicked(x -> Capture.force());
         bt_ssConfig.setOnMouseClicked(SSConfig.showDialog());
         bt_wcConfig.setOnMouseClicked(WCConfig.showDialog());
         bt_regHotkey.setOnMouseClicked(x -> {
             String hotkey = KeyEvent.KEY_PRESSED.getName();
-            Settings.setCaptureHotkey(hotkey);
+            Capture.setCaptureHotkey(hotkey);
             tf_hotkey.setText(hotkey);
         });
 
@@ -69,14 +69,14 @@ public class Controller implements Initializable{
             if (s.hasNextInt()){
                 int i = s.nextInt();
                 if (i > 0 && i < Integer.MAX_VALUE)
-                    Settings.setCaptureInterval(i);
+                    Capture.interval = i;
             }
         });
 
         // Schedule Tab
-        dp_start.chronologyProperty().addListener((observable, oldValue, newValue) -> Settings.setScheduleStart(newValue));
-        dp_end.chronologyProperty().addListener(((observable, oldValue, newValue) -> Settings.setScheduleStop(newValue)));
-        cb_schedule.selectedProperty().addListener(((observable, oldValue, newValue) -> Settings.schedule(newValue)));
+        dp_start.chronologyProperty().addListener((observable, oldValue, newValue) -> Schedule.setStartTime(newValue));
+        dp_end.chronologyProperty().addListener(((observable, oldValue, newValue) -> Schedule.setStopTime(newValue)));
+        cb_schedule.selectedProperty().addListener(((observable, oldValue, newValue) -> Schedule.setRunSchedule(newValue)));
 
         //Modify Tab
         bt_src.setOnMouseClicked(x -> {
