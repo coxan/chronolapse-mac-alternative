@@ -18,8 +18,8 @@ public class Capture implements Runnable{
     void init(){
         key = Settings.captureHotkey;
         interval = Settings.captureInterval;
-        enableSS = Settings.enableSS;
-        enableWC = Settings.enableWC;
+        enableSS = Settings.captureEnableSS;
+        enableWC = Settings.captureEnableWC;
     }
 
     public void run(){

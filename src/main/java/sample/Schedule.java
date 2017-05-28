@@ -11,6 +11,12 @@ public class Schedule {
     Date stop;
     static boolean run;
 
+    void init() {
+        start = Settings.scheduleStart;
+        stop = Settings.scheduleStop;
+        run = Settings.scheduleRun;
+    }
+
     static void setStartTime(Chronology c){
 
     }

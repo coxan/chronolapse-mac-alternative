@@ -81,20 +81,20 @@ public class Controller implements Initializable{
         //Modify Tab
         bt_src.setOnMouseClicked(x -> {
             File file = new DirectoryChooser().showDialog(Main.window).getAbsoluteFile();
-            Modify.setSrc(file);
+            Modify.src = file;
             tf_src.setText(file.getAbsolutePath());
         });
 
         bt_out.setOnMouseClicked(x -> {
             File file = new DirectoryChooser().showDialog(Main.window).getAbsoluteFile();
-            Modify.setOut(file);
+            Modify.out = file;
             tf_out.setText(file.getAbsolutePath());
         });
 
-        cb_rename.selectedProperty().addListener((observable, oldValue, newValue) -> Modify.setRename(newValue));
-        cb_resize.selectedProperty().addListener(((observable, oldValue, newValue) -> Modify.setResize(newValue)));
-        tf_width.textProperty().addListener(((observable, oldValue, newValue) -> Modify.setResizeWidth(newValue)));
-        tf_height.textProperty().addListener(((observable, oldValue, newValue) -> Modify.setResizeHeight(newValue)));
+        cb_rename.selectedProperty().addListener((observable, oldValue, newValue) -> Modify.rename = newValue);
+        cb_resize.selectedProperty().addListener((observable, oldValue, newValue) -> Modify.resize = newValue);
+        tf_width.textProperty().addListener((observable, oldValue, newValue) -> Modify.resizeWidth = Integer.valueOf(newValue));
+        tf_height.textProperty().addListener((observable, oldValue, newValue) -> Modify.resizeHeight = Integer.valueOf(newValue));
         bt_convert.setOnMouseClicked(x -> Modify.convert());
 
         //Render Tab
